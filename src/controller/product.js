@@ -20,6 +20,24 @@ const getAllProduct = async (req,res) => {
 
 }
 
+const createNewProduct = (req,res) => {
+    const {body} = req;
+    try {
+        productModels.createNewProduct(body);
+        res.json({
+            message: 'CREATE New product succes',
+            data : body
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'Server ERROR',
+            serverMessage : error,
+        })
+    }
+    
+
+}
 module.exports = {
-    getAllProduct
+    getAllProduct,
+    createNewProduct
 }
